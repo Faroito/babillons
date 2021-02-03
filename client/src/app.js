@@ -1,21 +1,19 @@
-import React, { useState, useEffect, useCallback } from "react";
-import axios from "axios";
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 
+import { HomePage, CallPage, NoMatchPage } from "./pages/index";
 import css from "./app.module.css";
 
-function App() {
-  const [data, setData] = useState();
-
-  const fetchData = useCallback(async () => {
-    axios
-      .get("http://localhost:4000/")
-      .then((response) => setData(response.data));
-  }, []);
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  return <div className={css.app}>{data?.exampleMessage}</div>;
-}
+const App = () => {
+  return (
+    <div className={css.app}>
+      <Switch>
+        <Route exact path={"/"} component={() => <HomePage />} />
+        <Route exact path={"/call"} component={() => <CallPage />} />
+        <Route component={NoMatchPage} />
+      </Switch>
+    </div>
+  );
+};
 
 export default App;
