@@ -1,11 +1,11 @@
 import { withConfiguration } from "./config";
-import { get } from "./fetcher";
+import { post } from "./fetcher";
 
 const api = "babillons-api";
 
-export const getHelloMessage = async () => {
+export const postRoomID = async () => {
   return withConfiguration(async (config) => {
-    const endpoint = `${config[api]}/`;
-    return get(endpoint);
+    const endpoint = `${config[api]}/room`;
+    return post(endpoint, {});
   });
 };

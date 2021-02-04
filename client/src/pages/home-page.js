@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { getHelloMessage } from "../services/api";
+import { postRoomID } from "../services/api";
+import { Button } from "../components";
 import css from "./css/home-page.module.css";
 
-const HomePage = () => {
-  const [data, setData] = useState("");
-
-  useEffect(() => {
-    const getData = async () => {
-      const results = await getHelloMessage();
-      setData(results);
-    };
-
-    getData();
-  }, []);
+const HomePage = ({ setRoomID }) => {
+  const getNewRoomId = async () => {
+    const data = await postRoomID();
+    setRoomID(data.id);
+    console.log(data);
+  };
 
   return (
-    <div className={css.app}>
-      <h1></h1>
-      <div>{data?.exampleMessage}</div>
+    <div className={css.page}>
+      <h1>Babillons</h1>
+      <Button
+        to={"/call"}
+        text={"Démarrer"}
+        onClick={(e) => {
+          getNewRoomId();
+        }}
+      />
     </div>
   );
 };

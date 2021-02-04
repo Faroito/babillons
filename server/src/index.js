@@ -1,14 +1,12 @@
-import Express from "express";
+import express from "express";
 import cors from "cors";
 
-const app = Express();
+import room from "./routes/room.js";
+
+const app = express();
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send({
-    exampleMessage: "React client connected to the Express server !",
-  });
-});
+app.use("/room", room);
 
 const start = () => {
   try {

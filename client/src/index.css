@@ -1,9 +1,9 @@
 :root {
   --bg1-color: #fcfdfd;
   --bg2-color: #1d3557;
-  --fg1-color: #a8dadc;
-  --fg2-color: #457b9d;
-  --fg3-color: #eca400;
+  --fg1-color: #457b9d;
+  --fg2-color: #eca400;
+  --fg3-color: #a8dadc;
   --dark-text-color: #312f2f;
   --light-text-color: #ebedef;
 }
